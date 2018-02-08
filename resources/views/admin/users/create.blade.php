@@ -8,6 +8,15 @@
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3>Register</h3>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                             <form class="register-form" action="{{route('users.store')}}" method="POST">
                                 {{ csrf_field() }}
@@ -22,23 +31,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Full Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" value="{{old('name')}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <div>
-                                            <input type="radio" name="gender" id="male" value={{\App\User::_MALE}}>Male
-                                            <input type="radio" name="gender" id="female" value={{\App\User::_FEMALE}}>Female
-                                            <input type="radio" name="gender" id="orther" value={{\App\User::_ORTHER}}>Other
+                                            <input type="radio" name="gender" id="male" value={{\App\User::_MALE}} @if(old('gender')==\App\User::_MALE) checked @endif>Male
+                                            <input type="radio" name="gender" id="female" value={{\App\User::_FEMALE}} @if(old('gender')==\App\User::_FEMALE) checked @endif>Female
+                                            <input type="radio" name="gender" id="orther" value={{\App\User::_ORTHER}} @if(old('gender')==\App\User::_ORTHER) checked @endif>Other
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="birthday">Birthday</label>
-                                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="">
+                                        <input type="date" class="form-control" id="birthday" name="birthday" value="{{old('birthday')}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                                        <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{old('address')}}">
                                     </div>
                                 </div>
                                 <div class="box-footer">

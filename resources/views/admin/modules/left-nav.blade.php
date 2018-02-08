@@ -22,7 +22,7 @@
             <li class="header">MENU</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Options</span>
+                    <i class="fa fa-dashboard"></i> <span>User Options</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

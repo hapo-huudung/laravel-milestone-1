@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserCreate;
+use App\Http\Requests\UserUpdate;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class ManagerUserController extends Controller
      */
     public function index()
     {
-        $users=User::all();
+        $users=User::paginate(5);
         return view('admin.users.index',['users'=>$users]);
     }
 
@@ -22,7 +24,7 @@ class ManagerUserController extends Controller
     {
         return view('admin.users.create');
     }
-    public function store(Request $request)
+    public function store(UserCreate $request)
     {
         $user= new User();
         $user->fill([
@@ -34,7 +36,7 @@ class ManagerUserController extends Controller
             'address'=>$request->address,
         ]);
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success',"Create Successfully");
     }
     public function show($id)
     {
@@ -46,7 +48,7 @@ class ManagerUserController extends Controller
         $user=User::findOrFail($id);
         return view('admin.users.edit',['user'=>$user]);
     }
-    public function update(Request $request, $id)
+    public function update(UserUpdate $request, $id)
     {
         $user=User::findOrFail($id);
         $user->update([
@@ -61,7 +63,8 @@ class ManagerUserController extends Controller
    public function destroy($id)
     {
         $user=User::findOrFail($id);
+        $name=$user->name;
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success',"$name was deleted successfully");
     }
 }

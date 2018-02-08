@@ -5,6 +5,14 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">
+
+                                <ul>
+                                    <li>{{session()->get('success')}}</li>
+                                </ul>
+                            </div>
+                        @endif
                         <div class="col-lg-6">
                             <h2>Manage Employee</h2>
                         </div>
@@ -55,6 +63,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="col-lg-3 col-lg-offset-9">
+                    {{$users->links()}}
+                </div>
             </div>
         </div>
     </div>

@@ -8,6 +8,15 @@
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3>Edit Infomation</h3>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                             <form class="register-form" action="{{route('users.update',['user'=>$user->id] )}}" method="POST">
                                 {{ csrf_field() }}
