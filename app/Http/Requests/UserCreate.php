@@ -24,26 +24,13 @@ class UserCreate extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'unique:users||required||email',
-            'name'=>'required|regex: /^[\p{L}\s\'.-]+$/',
-            'birthday'=>'required|date|before:now',
-            'password'=>'required|min:6',
-            'address'=>'required|max:255',
-            'gender'=>'required',
+            'email' => 'unique:users|required|email',
+            'name' => 'required|regex: /^[\p{L}\s\'.-]+$/',
+            'birthday' => 'required|date|before:now',
+            'password' => 'required|min:6',
+            'address' => 'required|max:255',
+            'gender' => 'required',
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required' => 'The Name field is required',
-            'email.required' => 'The Email field is required',
-            'birthday.required' => 'The Birthday field is required',
-            'address.required' => 'The Address field is required',
-            'password.required' => 'The Password field is required',
-            'gender.required' => 'The Gender field is required',
-
-
-        ];
-    }
 }

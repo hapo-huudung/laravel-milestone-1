@@ -24,10 +24,10 @@ class UserUpdate extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|regex: /^[\p{L}\s\'.-]+$/',
-            'birthday'=>'required|date|before:now',
-            'address'=>'required|max:255',
-            'gender'=>'required',
+            'name' => 'required|regex: /^[\p{L}\s\'.-]+$/',
+            'birthday' => 'required|date|before:now',
+            'address' => 'required|max:255',
+            'gender' => 'required',
         ];
     }
 }
