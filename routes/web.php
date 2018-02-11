@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('users', 'ManagerUserController');
+Route::post('users/search','ManagerUserController@search')->name('users.search');

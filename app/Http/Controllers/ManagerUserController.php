@@ -72,4 +72,16 @@ class ManagerUserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', "$name was deleted successfully");
     }
+
+    public function search()
+    {
+        $data = request()->content;
+        $users=User::where('name','like',"%$data%")
+            ->orWhere('email','lihke',"%$data%")
+            ->orWhere('birthday','like',"%$data%")
+            ->orWhere('address','like',"%$data%")
+            ->paginate(5);
+       // dd($users);
+        return view('admin.users.index',['users'=>$users]);
+    }
 }
