@@ -81,7 +81,11 @@ class ManagerUserController extends Controller
             ->orWhere('birthday','like',"%$data%")
             ->orWhere('address','like',"%$data%")
             ->paginate(5);
+        $datas=[
+            'key'=>$data,
+            'users'=>$users,
+        ];
        // dd($users);
-        return view('admin.users.index',['users'=>$users]);
+        return view('admin.users.search',$datas);
     }
 }
