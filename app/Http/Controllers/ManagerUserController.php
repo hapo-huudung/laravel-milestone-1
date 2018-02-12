@@ -27,6 +27,7 @@ class ManagerUserController extends Controller
 
     public function store(UserCreate $request)
     {
+        dd($request->all());
         $user = new User();
         $user->fill([
             'name' => $request->name,

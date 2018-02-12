@@ -7,7 +7,7 @@
                     <div class="row">
                         @if(session()->has('success'))
                             <div class="alert alert-success">
-                                {{session()->get('success')}}
+                                {{ session()->get('success') }}
                             </div>
                         @endif
                         <div class="col-lg-6">
@@ -36,23 +36,23 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>{{$count++}}</td>
-                            <td>{{$user->name}}</td>
+                            <td>{{ $count++ }}</td>
+                            <td>{{ $user->name }}</td>
                             <td>
-                                @if($user->gender==\App\User::_MALE) {{"Male"}}
-                                @elseif($user->gender==\App\User::_FEMALE){{"Female"}}
-                                @else {{"Other"}}
+                                @if($user->gender==\App\User::_MALE) {{ "Male" }}
+                                @elseif($user->gender==\App\User::_FEMALE){{ "Female" }}
+                                @else {{ "Other" }}
                                 @endif
                             </td>
-                            <td>{{$user->email}}</td>
-                            <td>{{(new \Carbon\Carbon($user->birthday))->format('d/m/Y')}}</td>
-                            <td>{{$user->address}}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ (new \Carbon\Carbon($user->birthday))->format('d/m/Y') }}</td>
+                            <td>{{ $user->address }}</td>
                             <td>
-                                <a href="{{route('users.show',['id'=>$user->id]) }}" class="btn btn-primary">Info</a>
-                                <a href="{{route('users.edit',['id'=>$user->id]) }}" class="btn btn-success">Edit</a>
-                                <form action="{{route('users.destroy',['id'=>$user->id])}}" method="post"
+                                <a href="{{ route('users.show',['id'=>$user->id])  }}" class="btn btn-primary">Info</a>
+                                <a href="{{ route('users.edit',['id'=>$user->id])  }}" class="btn btn-success">Edit</a>
+                                <form action="{{ route('users.destroy',['id'=>$user->id]) }}" method="post"
                                       class="form inline">
-                                    {{csrf_field()}}
+                                    {{ csrf_field() }}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-danger " type="submit">Delete</button>
                                 </form>
@@ -62,7 +62,7 @@
                     </tbody>
                 </table>
                 <div class="col-lg-3 col-lg-offset-9">
-                    {{$users->links()}}
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>
