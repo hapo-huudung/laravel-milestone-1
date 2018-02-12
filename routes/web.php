@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('users', 'ManagerUserController');
+Route::post('users/search','ManagerUserController@search')->name('users.search');
